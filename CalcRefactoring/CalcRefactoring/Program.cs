@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace CalcRefactoring
 {
@@ -16,21 +19,30 @@ namespace CalcRefactoring
         static void Main(string[] args)
         {
             var val1 = GetStruct<double>("Please enter val1");
-            var operation = GetStruct<MathOperation>("Please enter operation");
+            var operation = GetStruct<MathOperation>("Please enter operation: 'Plus' or 'Minus'");
             var val2 = GetStruct<double>("Please enter val2");
 
-            double result = 0;
-            
             #warning Exception
-            #warning Не нравится (вкусовщина)
-            switch (operation)
+            var result = operation switch
             {
-                #warning Плохая читаемость
-                case MathOperation.Plus: result = val1 + val2; break; 
-                case MathOperation.Minus: result = val1 - val2; break;
-            }
+                MathOperation.Plus => Plus(val1, val2),
+                MathOperation.Minus => Minus(val1, val2),
+            };
             
             Console.WriteLine($"Result is: {result}");
+        }
+
+        private static double Minus(double val1, double val2)
+            => val1 - val2;
+
+        private static double Plus(double val1, double val2)
+            => val1 + val2;
+
+
+        private static T GetEnumByItsDisplayName<T>(string message)
+            where T : Enum
+        {
+            throw new NotImplementedException();
         }
 
         private static T GetStruct<T>(string message) 
@@ -45,9 +57,12 @@ namespace CalcRefactoring
         }
     }
 
-    public enum MathOperation
+    public enum MathOperation: byte
     {
-        Plus,
+        [Display(Name = "+")]
+        Plus = 0,
+
+        [Display(Name = "-")]
         Minus
     }
 }
