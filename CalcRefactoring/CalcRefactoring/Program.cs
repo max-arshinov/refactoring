@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using static CalcRefactoring.ConsoleReader;
+using static CalcRefactoring.Calculator;
 
 namespace CalcRefactoring
 {
@@ -32,29 +32,7 @@ namespace CalcRefactoring
             Console.WriteLine($"Result is: {result}");
         }
 
-        private static double Minus(double val1, double val2)
-            => val1 - val2;
 
-        private static double Plus(double val1, double val2)
-            => val1 + val2;
-
-
-        private static T GetEnumByItsDisplayName<T>(string message)
-            where T : Enum
-        {
-            throw new NotImplementedException();
-        }
-
-        private static T GetStruct<T>(string message) 
-            where T : struct
-        {
-            Console.WriteLine(message + ":");
-            #warning Exception
-            #warning Performance (boxing/unboxing) 
-            return typeof(T).IsEnum 
-                ? Enum.Parse<T>(Console.ReadLine()) 
-                : (T)Convert.ChangeType(Console.ReadLine(), typeof(T));
-        }
     }
 
     public enum MathOperation: byte
