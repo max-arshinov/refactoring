@@ -1,3 +1,5 @@
+using System;
+
 namespace Calculators
 {
     public class CheckedCalculator : CalculatorBase
@@ -10,17 +12,6 @@ namespace Calculators
         public override double Plus(double val1, double val2)
         {
             return checked(base.Plus(val1, val2));
-        }
-
-        public bool TryCalculate(double va1, MathOperation mathOperation, double val2, out double result)
-        {
-            if (true)
-            {
-                result = Calculate(va1, mathOperation, val2);
-                return true;
-            }
-
-            return false;
         }
     }
 }

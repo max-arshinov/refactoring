@@ -8,6 +8,7 @@ namespace Calculators
         Plus = 0,
 
         [Display(Name = "-")]
-        Minus
+        Minus,
+        Divide
     }
 }

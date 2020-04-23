@@ -8,11 +8,11 @@ namespace Calculators
         public virtual double Plus(double val1, double val2)
             => val1 + val2;
 
-        public double Calculate(double val1, MathOperation operation, double val2)
-            => operation switch
+        public double Calculate(CalcParameters inClassName)
+            => inClassName.Operation switch
             {
-                MathOperation.Plus => Plus(val1, val2),
-                MathOperation.Minus => Minus(val1, val2),
+                MathOperation.Plus => Plus(inClassName.Val1, inClassName.Val2),
+                MathOperation.Minus => Minus(inClassName.Val1, inClassName.Val2),
             };
     }
 }
