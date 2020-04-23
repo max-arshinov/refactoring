@@ -15,9 +15,9 @@ namespace CalcRefactoring
         #warning Нет тестов
         static void Main(string[] args)
         {
-            var val1 = GetValue<double>("Please enter val1");
-            var operation = GetValue<MathOperation>("Please enter operation");
-            var val2 = GetValue<double>("Please enter val2");
+            var val1 = GetStruct<double>("Please enter val1");
+            var operation = GetStruct<MathOperation>("Please enter operation");
+            var val2 = GetStruct<double>("Please enter val2");
 
             double result = 0;
             
@@ -33,12 +33,15 @@ namespace CalcRefactoring
             Console.WriteLine($"Result is: {result}");
         }
 
-        private static T GetValue<T>(string message)
+        private static T GetStruct<T>(string message) 
+            where T : struct
         {
             Console.WriteLine(message + ":");
             #warning Exception
             #warning Performance (boxing/unboxing) 
-            return (T)Convert.ChangeType(Console.ReadLine(), typeof(T));
+            return typeof(T).IsEnum 
+                ? Enum.Parse<T>(Console.ReadLine()) 
+                : (T)Convert.ChangeType(Console.ReadLine(), typeof(T));
         }
     }
 
