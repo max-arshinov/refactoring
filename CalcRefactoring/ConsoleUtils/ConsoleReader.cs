@@ -1,6 +1,6 @@
 using System;
 
-namespace CalcRefactoring
+namespace ConsoleUtils
 {
     public class ConsoleReader
     {

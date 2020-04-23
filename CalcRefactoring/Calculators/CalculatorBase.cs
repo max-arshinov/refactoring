@@ -1,4 +1,4 @@
-namespace CalcRefactoring
+namespace Calculators
 {
     public abstract class CalculatorBase : ICalculator
     {

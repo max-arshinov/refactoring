@@ -1,6 +1,6 @@
 using System;
 
-namespace CalcRefactoring
+namespace Calculators
 {
     public class MatchOperationException : Exception
     {

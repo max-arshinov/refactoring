@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace CalcRefactoring
+namespace Calculators
 {
     public enum MathOperation: byte
     {

@@ -1,5 +1,6 @@
 using System;
 using CalcRefactoring;
+using Calculators;
 using Xunit;
 
 namespace CalculatorTests
