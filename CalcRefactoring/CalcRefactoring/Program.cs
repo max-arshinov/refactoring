@@ -5,26 +5,28 @@ namespace CalcRefactoring
     class Program
     {
         // + Заработал с первого раза
-        // + Мне было очень
+        // + Мне было очень просто
         // + Сделал очень быстро
+        
+        // - Не пройдет код-ревью у преподавателя, потому что он злюка и что-то ему надо про архитектуру и
+        // качество ему подавай
+        // - Не получу балллов :(
+        // - "Сопартийцы" закидают помидорами / будут ругаться
         #warning Нет тестов
         static void Main(string[] args)
         {
-            #warning Дублирование
-            Console.WriteLine("Please enter val1:");
             #warning Exception
-            var val1 = Double.Parse(Console.ReadLine());
-            
+            var val1 = GetDouble("Please enter val1");
+
             #warning Дублирование
             Console.WriteLine("Please enter operation:");
             var operation = Console.ReadLine();
 
-            #warning Дублирование
-            Console.WriteLine("Please enter val2:");
             #warning Exception
-            var val2 = Double.Parse(Console.ReadLine());
+            var val2 = GetDouble("Please enter val2");
 
             double result = 0;
+            
             #warning Не нравится (вкусовщина)
             #warning Exception
             switch (operation)
@@ -35,6 +37,13 @@ namespace CalcRefactoring
             }
             
             Console.WriteLine($"Result is: {result}");
+        }
+
+        private static double GetDouble(string message)
+        {
+            Console.WriteLine(message + ":");
+            var val1 = Double.Parse(Console.ReadLine());
+            return val1;
         }
     }
 }
